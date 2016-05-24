@@ -1,0 +1,36 @@
+{
+	"ImportPath": "github.com/estesp/elastistack",
+	"GoVersion": "go1.6.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.10.0-16-gcd7d1bb",
+			"Rev": "cd7d1bbe41066b6c1f19780f895901052150a575"
+		},
+		{
+			"ImportPath": "github.com/araddon/gou",
+			"Rev": "50a94aa4a3fb69e8fbde05df290fcb49fa685e07"
+		},
+		{
+			"ImportPath": "github.com/bitly/go-hostpool",
+			"Rev": "d0e59c22a56e8dadfed24f74f452cea5a52722d2"
+		},
+		{
+			"ImportPath": "github.com/maruel/panicparse/stack",
+			"Rev": "fad3904e072035be3feaceecd7c26fc3139b1d29"
+		},
+		{
+			"ImportPath": "github.com/mattbaird/elastigo/lib",
+			"Comment": "v1.0-331-g34c4c4d",
+			"Rev": "34c4c4d8425cbdcbc8e257943a2044d5e9f7dab5"
+		},
+		{
+			"ImportPath": "github.com/spf13/cobra",
+			"Rev": "f368244301305f414206f889b1735a54cfc8bde8"
+		},
+		{
+			"ImportPath": "github.com/spf13/pflag",
+			"Rev": "cb88ea77998c3f024757528e3305022ab50b43be"
+		}
+	]
+}
