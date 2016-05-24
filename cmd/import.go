@@ -1,4 +1,4 @@
-// Copyright © 2016 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2016 Phil Estes <estesp@gmail.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -93,15 +93,15 @@ trace data into Elasticsearch for further analysis.`,
 		}()
 
 		<-done
+		log.Info("Goroutine data import complete")
 		return nil
 	},
 }
 
 func init() {
 	RootCmd.AddCommand(importCmd)
+	importCmd.PersistentFlags().StringVarP(&esHost, "host", "e", esDefaultHost, "Hostname for Elasticsearch endpoint")
+	importCmd.PersistentFlags().IntVarP(&esPort, "port", "p", esDefaultPort, "Port for Elasticsearch endpoint")
 
-	importCmd.PersistentFlags().StringVarP(&esHost, "host", "e", esDefaultHost, "Hostname for Elasticstack endpoint (localhost)")
-	importCmd.PersistentFlags().IntVarP(&esPort, "port", "p", esDefaultPort, "Port for Elasticstack endpoint (9200)")
-
-	importCmd.Flags().StringVarP(&inputFile, "input", "i", "", "Input filename with Golang stack trace data")
+	importCmd.Flags().StringVarP(&inputFile, "input", "i", "", "Input filename containing Golang stack trace data")
 }

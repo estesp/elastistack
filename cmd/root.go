@@ -48,12 +48,7 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initLogLevel)
-
-	// Here you will define your flags and configuration settings.
-	// Cobra supports Persistent Flags, which, if defined here,
-	// will be global for your application.
-
-	RootCmd.PersistentFlags().StringVar(&logLevel, "log-level", "", "set the logging level (info,warn,err,debug")
+	RootCmd.PersistentFlags().StringVar(&logLevel, "log-level", "warn", "set the logging level (info,warn,err,debug)")
 }
 
 func initLogLevel() {
@@ -69,9 +64,6 @@ func initLogLevel() {
 		return
 	case "debug":
 		log.SetLevel(log.DebugLevel)
-		return
-	case "":
-		log.SetLevel(log.WarnLevel)
 		return
 	}
 	fmt.Printf("Invalid log level specified: %q\n", logLevel)
