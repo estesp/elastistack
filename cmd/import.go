@@ -76,9 +76,9 @@ trace data into Elasticsearch for further analysis.`,
 		// base time from which offsets will be calculated
 		timeNow := time.Now()
 
-		log.Infof("Loading routine data in elastic search..%d\n", len(routines))
+		log.Infof("Loading routine data in elastic search..%d", len(routines))
 		for idx, routine := range routines {
-			log.Debugf("[%03d] routine #%d\n", idx, routine.ID)
+			log.Debugf("[%03d] routine #%d", idx, routine.ID)
 			rTime := timeNow.Add(time.Minute * time.Duration(-routine.SleepMin))
 			routineEntry := goroutine.NewGoroutineTrace(routine, rTime)
 			bulkIndexer.Index(defaultIndex, defaultType, fmt.Sprintf("%d", idx), "", "", &rTime, routineEntry)
