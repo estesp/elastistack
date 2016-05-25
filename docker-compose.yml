@@ -1,0 +1,14 @@
+elasticsearch:
+    image: elasticsearch:2.3.3
+    volumes:
+        - ./volumes/elasticsearch:/usr/share/elasticsearch/data/
+    ports:
+        - 9200:9200
+
+kibana:
+    image: kibana:4.5.1
+    links:
+        - elasticsearch
+    ports:
+        - 5601:5601
+
