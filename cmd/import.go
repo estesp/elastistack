@@ -15,9 +15,8 @@
 package cmd
 
 import (
-	"bytes"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
@@ -57,14 +56,14 @@ trace data into Elasticsearch for further analysis.`,
 			return fmt.Errorf("Must specify a filename for --input")
 		}
 
-		inputBytes, err := ioutil.ReadFile(inputFile)
+		f, err := os.Open(inputFile)
 		if err != nil {
-			log.Errorf("Error reading from %q: %v", inputFile, err)
-			return err
+			log.WithError(err).Error("Could not read input file")
+			return fmt.Errorf("Could not read input file: %v", err)
 		}
-		fReader := bytes.NewReader(inputBytes)
-		log.Info("parsing stack dump")
-		routines, err := stack.ParseDump(fReader, nil)
+		defer f.Close()
+
+		routines, err := stack.ParseDump(f, nil)
 		if err != nil {
 			log.Errorf("Error trying to parse dump: %v", err)
 			return err
